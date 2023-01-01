@@ -25,11 +25,11 @@ def jogar():
         else:
             letras_tentadas += chute
 
-        if (chute in palavra_secreta_simplificada or chute in palavra_secreta):
-            marca_chute_correto(chute, letras_acertadas, palavra_secreta, palavra_secreta_simplificada)
-        else:
-            erros += 1
-            desenha_forca(erros)
+            if (chute in palavra_secreta_simplificada or chute in palavra_secreta):
+                marca_chute_correto(chute, letras_acertadas, palavra_secreta, palavra_secreta_simplificada)
+            else:
+                erros += 1
+                desenha_forca(erros)
 
 
         enforcou = erros == 7
@@ -142,6 +142,12 @@ def marca_chute_correto(chute, letras_acertadas, palavra_secreta, palavra_secret
         if (chute == letra):
             letras_acertadas[index] = palavra_secreta[index]
         index += 1
+    index = 0
+    for letra in palavra_secreta:
+        if (chute == letra):
+            letras_acertadas[index] = palavra_secreta[index]
+        index += 1
+
 
 
 def imprime_mensagem_abertura():
@@ -159,7 +165,8 @@ def carrega_palavra_secreta():
             palavras.append(linha)
     # arquivo.close()
     numero = random.randrange(0, len(palavras))
-    palavra_secreta = palavras[numero].upper()
+    #palavra_secreta = palavras[numero].upper()
+    palavra_secreta = "maçã".upper()
 
     return palavra_secreta
 
